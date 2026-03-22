@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flores Amarillas - Con Amor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Quicksand:wght@400;500;600&display=swap"
+    rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow-x: hidden;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      font-family: 'Quicksand', sans-serif;
+      color: white;
+      padding: 20px;
+    }
+
+    /* ===== FONDO ANIMADO ===== */
+    .bg-animation {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .bg-circle {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.3;
+      animation: float 8s ease-in-out infinite;
+    }
+
+    .bg-circle:nth-child(1) {
+      width: 400px;
+      height: 400px;
+      background: linear-gradient(135deg, #ffd700, #f4a460);
+      top: -100px;
+      right: -100px;
+      animation-delay: 0s;
+    }
+
+    .bg-circle:nth-child(2) {
+      width: 300px;
+      height: 300px;
+      background: linear-gradient(135deg, #ffeaa7, #fdcb6e);
+      bottom: -50px;
+      left: -50px;
+      animation-delay: 2s;
+    }
+
+    .bg-circle:nth-child(3) {
+      width: 250px;
+      height: 250px;
+      background: linear-gradient(135deg, #dfe6e9, #b2bec3);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation-delay: 4s;
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0) scale(1);
+      }
+
+      50% {
+        transform: translateY(-30px) scale(1.05);
+      }
+    }
+
+    /* ===== ESTRELLAS ===== */
+    .stars {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .star {
+      position: absolute;
+      background: white;
+      border-radius: 50%;
+      animation: twinkle 3s ease-in-out infinite;
+    }
+
+    @keyframes twinkle {
+
+      0%,
+      100% {
+        opacity: 0.3;
+        transform: scale(0.8);
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(1.2);
+      }
+    }
+
+    /* ===== CONTENEDOR PRINCIPAL ===== */
+    .container {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      padding-bottom: 40px;
+    }
+
+    /* ===== TARJETA PRINCIPAL ===== */
+    .card {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-radius: 28px;
+      padding: 45px 35px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+      text-align: center;
+      animation: cardAppear 1s ease forwards;
+      transform: translateY(30px);
+      opacity: 0;
+    }
+
+    .card:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    .card:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+
+    .card:nth-child(4) {
+      animation-delay: 0.6s;
+    }
+
+    @keyframes cardAppear {
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    /* ===== FLOR PRINCIPAL ===== */
+    .main-flower {
+      font-size: 4.5rem;
+      display: block;
+      margin-bottom: 15px;
+      animation: bounce 2s ease-in-out infinite;
+      filter: drop-shadow(0 10px 30px rgba(255, 215, 0, 0.4));
+    }
+
+    @keyframes bounce {
+
+      0%,
+      100% {
+        transform: translateY(0) rotate(0deg);
+      }
+
+      25% {
+        transform: translateY(-8px) rotate(-5deg);
+      }
+
+      75% {
+        transform: translateY(-8px) rotate(5deg);
+      }
+    }
+
+    /* ===== TITULO ===== */
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.8rem;
+      font-weight: 600;
+      background: linear-gradient(135deg, #ffd700 0%, #fff7ad 30%, #ffd700 60%, #ffed4a 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmer 3s linear infinite;
+      margin-bottom: 12px;
+    }
+
+    @keyframes shimmer {
+      to {
+        background-position: 200% center;
+      }
+    }
+
+    /* ===== SUBTITULO ===== */
+    .subtitle {
+      font-size: 1.1rem;
+      color: rgba(255, 255, 255, 0.85);
+      margin-bottom: 25px;
+      line-height: 1.6;
+    }
+
+    .subtitle .highlight {
+      color: #ffd700;
+      font-weight: 600;
+    }
+
+    /* ===== SEPARADOR ===== */
+    .divider {
+      width: 80px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #ffd700, transparent);
+      margin: 0 auto 25px;
+      border-radius: 3px;
+    }
+
+    /* ===== SECCION DE CITA ALEATORIA ===== */
+    .random-quote-section {
+      background: rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(20px);
+      border-radius: 28px;
+      padding: 40px 30px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+      transform: translateY(30px);
+      opacity: 0;
+      animation: cardAppear 1s ease forwards 0.3s;
+      text-align: center;
+    }
+
+    .random-quote-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 25px;
+    }
+
+    .random-quote-header-icon {
+      font-size: 1.8rem;
+    }
+
+    .random-quote-header h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: #ffd700;
+    }
+
+    /* Contenedor de la cita actual */
+    .current-quote {
+      background: rgba(255, 215, 0, 0.08);
+      border: 1px solid rgba(255, 215, 0, 0.2);
+      border-radius: 20px;
+      padding: 30px 25px;
+      margin-bottom: 25px;
+      min-height: 180px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      transition: all 0.4s ease;
+    }
+
+    .current-quote.changing {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+
+    .quote-icon-display {
+      font-size: 2rem;
+      margin-bottom: 15px;
+      display: block;
+    }
+
+    .quote-text-display {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-style: italic;
+      color: rgba(255, 255, 255, 0.95);
+      line-height: 1.7;
+      margin-bottom: 15px;
+    }
+
+    .quote-reference-display {
+      font-size: 0.9rem;
+      color: #ffd700;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .quote-theme-display {
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.5);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-top: 10px;
+    }
+
+    /* Boton de nueva cita */
+    .new-quote-btn {
+      background: linear-gradient(135deg, #ffd700, #f4a460);
+      border: none;
+      border-radius: 50px;
+      padding: 16px 35px;
+      font-family: 'Quicksand', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #1a1a2e;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
+    }
+
+    .new-quote-btn:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 12px 35px rgba(255, 215, 0, 0.4);
+    }
+
+    .new-quote-btn:active {
+      transform: translateY(-1px) scale(1.01);
+    }
+
+    /* ===== MENSAJE ESPECIAL ===== */
+    .special-message {
+      background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 215, 0, 0.05));
+      border: 1px solid rgba(255, 215, 0, 0.2);
+      border-radius: 20px;
+      padding: 30px 25px;
+      margin-top: 25px;
+      text-align: center;
+    }
+
+    .special-message-icon {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+      display: block;
+    }
+
+    .special-message p {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .special-message .signature {
+      margin-top: 15px;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      color: #ffd700;
+      font-size: 1.1rem;
+    }
+
+    /* ===== REPRODUCTOR DE MUSICA ===== */
+    .music-section {
+      background: rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(20px);
+      border-radius: 28px;
+      padding: 35px 30px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      transform: translateY(30px);
+      opacity: 0;
+      animation: cardAppear 1s ease forwards 0.5s;
+    }
+
+    .music-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .music-icon {
+      font-size: 2rem;
+    }
+
+    .music-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      color: #ffd700;
+      font-weight: 600;
+    }
+
+    .music-subtitle {
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.6);
+      margin-bottom: 20px;
+    }
+
+    .play-btn {
+      background: linear-gradient(135deg, #ffd700, #f4a460);
+      border: none;
+      border-radius: 50px;
+      padding: 16px 40px;
+      font-family: 'Quicksand', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #1a1a2e;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
+    }
+
+    .play-btn:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 12px 35px rgba(255, 215, 0, 0.4);
+    }
+
+    .play-btn.playing {
+      background: linear-gradient(135deg, #f4a460, #e17055);
+    }
+
+    .audio-container {
+      margin-top: 20px;
+    }
+
+    audio {
+      width: 100%;
+      height: 45px;
+      border-radius: 25px;
+      outline: none;
+    }
+
+    /* ===== VISUALIZADOR DE AUDIO ===== */
+    .audio-visualizer {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      gap: 5px;
+      height: 35px;
+      margin-top: 20px;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .audio-visualizer.active {
+      opacity: 1;
+    }
+
+    .audio-bar {
+      width: 6px;
+      background: linear-gradient(to top, #ffd700, #f4a460);
+      border-radius: 3px;
+      animation: audioWave 0.5s ease-in-out infinite alternate;
+    }
+
+    .audio-bar:nth-child(1) {
+      height: 10px;
+      animation-delay: 0s;
+    }
+
+    .audio-bar:nth-child(2) {
+      height: 20px;
+      animation-delay: 0.1s;
+    }
+
+    .audio-bar:nth-child(3) {
+      height: 15px;
+      animation-delay: 0.2s;
+    }
+
+    .audio-bar:nth-child(4) {
+      height: 25px;
+      animation-delay: 0.3s;
+    }
+
+    .audio-bar:nth-child(5) {
+      height: 18px;
+      animation-delay: 0.4s;
+    }
+
+    .audio-bar:nth-child(6) {
+      height: 22px;
+      animation-delay: 0.5s;
+    }
+
+    .audio-bar:nth-child(7) {
+      height: 12px;
+      animation-delay: 0.6s;
+    }
+
+    @keyframes audioWave {
+      to {
+        height: 35px;
+      }
+    }
+
+    .music-note {
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.5);
+      margin-top: 18px;
+      line-height: 1.5;
+    }
+
+    /* Mensaje de autoplay */
+    .autoplay-notice {
+      background: rgba(255, 215, 0, 0.15);
+      border: 1px solid rgba(255, 215, 0, 0.3);
+      border-radius: 12px;
+      padding: 12px 18px;
+      margin-top: 15px;
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.8);
+      display: none;
+    }
+
+    .autoplay-notice.show {
+      display: block;
+    }
+
+    /* ===== FLORES CAYENDO ===== */
+    .flower {
+      position: fixed;
+      top: -60px;
+      font-size: 1.8rem;
+      pointer-events: none;
+      z-index: 5;
+      filter: drop-shadow(0 5px 15px rgba(255, 215, 0, 0.3));
+      animation: fall linear forwards;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      text-align: center;
+      padding: 20px;
+      color: rgba(255, 255, 255, 0.4);
+      font-size: 0.85rem;
+    }
+
+    .footer-heart {
+      color: #ffd700;
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.2);
+      }
+    }
+
+    /* ===== PANTALLA DE INICIO ===== */
+    .start-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      transition: opacity 0.8s ease, visibility 0.8s ease;
+    }
+
+    .start-screen.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .start-flower {
+      font-size: 6rem;
+      margin-bottom: 30px;
+      animation: bounce 2s ease-in-out infinite;
+      filter: drop-shadow(0 15px 40px rgba(255, 215, 0, 0.5));
+    }
+
+    .start-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.5rem;
+      font-weight: 600;
+      color: #ffd700;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    .start-subtitle {
+      font-size: 1.1rem;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 40px;
+      text-align: center;
+    }
+
+    .start-btn {
+      background: linear-gradient(135deg, #ffd700, #f4a460);
+      border: none;
+      border-radius: 50px;
+      padding: 20px 50px;
+      font-family: 'Quicksand', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #1a1a2e;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
+    }
+
+    .start-btn:hover {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 15px 40px rgba(255, 215, 0, 0.5);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 500px) {
+
+      .card,
+      .random-quote-section,
+      .music-section {
+        padding: 35px 22px;
+        border-radius: 24px;
+      }
+
+      h1 {
+        font-size: 2.2rem;
+      }
+
+      .subtitle {
+        font-size: 1rem;
+      }
+
+      .main-flower {
+        font-size: 3.5rem;
+      }
+
+      .quote-text-display {
+        font-size: 1.05rem;
+      }
+
+      .random-quote-header h2 {
+        font-size: 1.4rem;
+      }
+
+      .start-flower {
+        font-size: 4.5rem;
+      }
+
+      .start-title {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Pantalla de inicio para activar audio -->
+  <div class="start-screen" id="startScreen">
+    <span class="start-flower">🌻</span>
+    <h1 class="start-title">Flores Amarillas</h1>
+    <p class="start-subtitle">Un regalo especial para ti</p>
+    <button class="start-btn" onclick="startExperience()">Abrir mi regalo</button>
+  </div>
+
+  <!-- Fondo animado -->
+  <div class="bg-animation">
+    <div class="bg-circle"></div>
+    <div class="bg-circle"></div>
+    <div class="bg-circle"></div>
+  </div>
+
+  <!-- Estrellas -->
+  <div class="stars" id="stars"></div>
+
+  <!-- Contenido principal -->
+  <div class="container">
+
+    <!-- Tarjeta principal -->
+    <div class="card">
+      <span class="main-flower">🌻</span>
+      <h1>Para Abby 🩷 </h1>
+      <p class="subtitle">Un regalo especial para ti en este <span class="highlight">Dia de las Flores Amarillas</span>
+      </p>
+      <div class="divider"></div>
+
+      <div class="special-message">
+        <span class="special-message-icon">💛</span>
+        <p>Que estas flores amarillas aunque sean digitales te recuerden que nunca estas sola, eres querida y que siempre hay luz
+          esperandote incluso en los dias mas grises.</p>
+        <p class="signature">Con todo el cariño del mundo</p>
+      </div>
+    </div>
+
+    <!-- Seccion de cita biblica aleatoria -->
+    <section class="random-quote-section">
+      <div class="random-quote-header">
+        <span class="random-quote-header-icon">✝️</span>
+        <h2>Palabras de Fe y Amor para ti</h2>
+      </div>
+
+      <div class="current-quote" id="currentQuote">
+        <span class="quote-icon-display" id="quoteIcon">💕</span>
+        <p class="quote-text-display" id="quoteText">"El amor es paciente, es bondadoso. El amor no es envidioso ni
+          jactancioso ni orgulloso."</p>
+        <p class="quote-reference-display" id="quoteReference">1 Corintios 13:4</p>
+        <p class="quote-theme-display" id="quoteTheme">Sobre el Amor</p>
+      </div>
+
+      <button class="new-quote-btn" onclick="showRandomQuote()">
+        <span>✨</span>
+        <span>Nueva</span>
+      </button>
+    </section>
+
+    <!-- Reproductor de musica -->
+    <section class="music-section">
+      <p class="music-subtitle">Flores Amarillas - Floricienta</p>
+
+      <button class="play-btn" id="playBtn" onclick="toggleMusic()">
+        <span id="playIcon">▶️</span>
+        <span id="playText">Reproducir Musica</span>
+      </button>
+
+      <div class="audio-container">
+        <audio id="audioPlayer" loop>
+
+          <source src="Flores.mp3" type="audio/mpeg">
+          Tu navegador no soporta el elemento de audio.
+        </audio>
+      </div>
+
+      <div class="audio-visualizer" id="visualizer">
+        <div class="audio-bar"></div>
+        <div class="audio-bar"></div>
+        <div class="audio-bar"></div>
+        <div class="audio-bar"></div>
+        <div class="audio-bar"></div>
+        <div class="audio-bar"></div>
+        <div class="audio-bar"></div>
+      </div>
+
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>Hecho con <span class="footer-heart">💛</span> para alguien especial</p>
+    </footer>
+
+  </div>
+
+  <script>
+    // ===== CITAS BIBLICAS =====
+    const biblicalQuotes = [
+      {
+        icon: "💕",
+        text: "\"El amor es paciente, es bondadoso. El amor no es envidioso ni jactancioso ni orgulloso. No se comporta con rudeza, no es egoista, no se enoja facilmente, no guarda rencor.\"",
+        reference: "1 Corintios 13:4-5",
+        theme: "Sobre el Amor"
+      },
+      {
+        icon: "🕊️",
+        text: "\"Mejor es el fin del asunto que su principio; mejor es el paciente de espiritu que el altivo de espiritu.\"",
+        reference: "Eclesiastes 7:8",
+        theme: "Sobre la Paciencia"
+      },
+      {
+        icon: "💪",
+        text: "\"No nos cansemos de hacer el bien, porque a su debido tiempo cosecharemos si no nos damos por vencidos.\"",
+        reference: "Galatas 6:9",
+        theme: "Nunca te Rindas"
+      },
+      {
+        icon: "🙏",
+        text: "\"Porque yo se los planes que tengo para ustedes, planes de bienestar y no de calamidad, a fin de darles un futuro y una esperanza.\"",
+        reference: "Jeremias 29:11",
+        theme: "Sobre la Esperanza"
+      },
+      {
+        icon: "🌟",
+        text: "\"Todo lo puedo en Cristo que me fortalece.\"",
+        reference: "Filipenses 4:13",
+        theme: "Sobre la Fortaleza"
+      },
+      {
+        icon: "🌈",
+        text: "\"No temas, porque yo estoy contigo; no desmayes, porque yo soy tu Dios que te fortalezco; siempre te ayudare, siempre te sustentare con la diestra de mi justicia.\"",
+        reference: "Isaias 41:10",
+        theme: "No Tengas Miedo"
+      },
+      {
+        icon: "❤️",
+        text: "\"Porque de tal manera amo Dios al mundo, que ha dado a su Hijo unigenito, para que todo aquel que en el cree, no se pierda, mas tenga vida eterna.\"",
+        reference: "Juan 3:16",
+        theme: "El Amor de Dios"
+      },
+      {
+        icon: "🌻",
+        text: "\"Ama al Senor tu Dios con todo tu corazon, con toda tu alma, con toda tu mente y con todas tus fuerzas.\"",
+        reference: "Marcos 12:30",
+        theme: "Amar a Dios"
+      },
+      {
+        icon: "🤲",
+        text: "\"Confiad en el Senor para siempre, porque el Senor es la Roca eterna.\"",
+        reference: "Isaias 26:4",
+        theme: "Confianza en Dios"
+      },
+      {
+        icon: "🕯️",
+        text: "\"Lampara es a mis pies tu palabra, y lumbrera a mi camino.\"",
+        reference: "Salmos 119:105",
+        theme: "La Palabra de Dios"
+      },
+      {
+        icon: "🌸",
+        text: "\"El amor nunca deja de ser.\"",
+        reference: "1 Corintios 13:8",
+        theme: "Amor Eterno"
+      },
+      {
+        icon: "⭐",
+        text: "\"El Senor es mi pastor, nada me faltara.\"",
+        reference: "Salmos 23:1",
+        theme: "Dios Provee"
+      },
+      {
+        icon: "🌿",
+        text: "\"Venid a mi todos los que estais trabajados y cargados, y yo os hare descansar.\"",
+        reference: "Mateo 11:28",
+        theme: "Descanso en Dios"
+      },
+      {
+        icon: "💫",
+        text: "\"Con amor eterno te he amado; por tanto, te prolongue mi misericordia.\"",
+        reference: "Jeremias 31:3",
+        theme: "Amor Infinito"
+      },
+      {
+        icon: "🙌",
+        text: "\"Esforzaos y cobrad animo; no temais, ni tengais miedo de ellos, porque el Senor tu Dios es el que va contigo; no te dejara, ni te desamparara.\"",
+        reference: "Deuteronomio 31:6",
+        theme: "Dios Siempre Contigo"
+      },
+      {
+        icon: "🌱",
+        text: "\"Yo soy la vid verdadera y mi Padre es el viñador. [...] Permaneced en mí, como yo en vosotros. [...] El que permanece en mí, y yo en él, ese da mucho fruto; porque separados de mí no podéis hacer nada.\"",
+        reference: "Juan 15:1,4-5",
+        theme: "Unión con Cristo"
+      },
+    {
+      icon: "🔥",
+        text: "\"Sed pacientes, pues, hermanos, hasta la venida del Señor. Mirad al agricultor que espera el fruto precioso de la tierra, siendo paciente con él hasta recibir la lluvia temprana y la tardía.\"",
+          reference: "Santiago 5:7",
+            theme: "Paciencia en la Espera"
+    },
+    {
+      icon: "🏃‍♂️",
+        text: "\"Corramos con perseverancia la carrera que tenemos por delante, fijos los ojos en Jesús, el autor y consumador de nuestra fe.\"",
+          reference: "Hebreos 12:1-2",
+            theme: "Perseverancia en la Fe"
+    },
+    {
+      icon: "⚓",
+        text: "\"Tenemos esta esperanza como ancla del alma, segura y firme, que penetra hasta detrás del velo.\"",
+          reference: "Hebreos 6:19",
+            theme: "Esperanza Segura"
+    },
+    {
+      icon: "🌪️",
+        text: "\"Pero los que esperan en el Señor renovarán sus fuerzas; volarán alto como águilas; correrán y no se fatigarán, caminarán y no se cansarán.\"",
+          reference: "Isaías 40:31",
+            theme: "Fuerza Renovada"
+    },
+    {
+      icon: "👑",
+        text: "\"El temor del Señor es el principio de la sabiduría; ella fue creada con los fieles en el seno materno.\"",
+          reference: "Eclesiástico 1:14",
+            theme: "Sabiduría del Temor de Dios"
+    },
+    {
+      icon: "🤝",
+        text: "\"Amaos unos a otros como yo os he amado. Nadie tiene mayor amor que este: dar la vida por sus amigos.\"",
+          reference: "Juan 15:12-13",
+            theme: "Amor Sacrificial"
+    },
+    {
+      icon: "💎",
+        text: "\"El amor nunca deja de ser. [...] Ahora, pues, permanecen la fe, la esperanza y el amor, estas tres; pero la mayor de ellas es el amor.\"",
+          reference: "1 Corintios 13:8,13",
+            theme: "Amor Eterno"
+    },
+    {
+      icon: "🛡️",
+        text: "\"Creced en la gracia y el conocimiento de nuestro Señor y Salvador Jesucristo.\"",
+          reference: "2 Pedro 3:18",
+            theme: "Crecimiento Espiritual"
+    },
+    {
+      icon: "🌍",
+        text: "\"El Dios de la esperanza os llene de todo gozo y paz en el creer, para que abundéis en esperanza por el poder del Espíritu Santo.\"",
+          reference: "Romanos 15:13",
+            theme: "Esperanza en el Espíritu"
+    },
+    {
+      icon: "🦅",
+        text: "\"Él da poder a los débiles y fortalece a los sin fuerzas.\"",
+          reference: "Isaías 40:29",
+            theme: "Fortaleza Divina"
+    },
+    ];
+
+    let lastQuoteIndex = -1;
+
+    function showRandomQuote() {
+      const quoteContainer = document.getElementById('currentQuote');
+
+      // Animacion de salida
+      quoteContainer.classList.add('changing');
+
+      setTimeout(() => {
+        // Obtener una cita diferente a la anterior
+        let randomIndex;
+        do {
+          randomIndex = Math.floor(Math.random() * biblicalQuotes.length);
+        } while (randomIndex === lastQuoteIndex && biblicalQuotes.length > 1);
+
+        lastQuoteIndex = randomIndex;
+        const quote = biblicalQuotes[randomIndex];
+
+        // Actualizar contenido
+        document.getElementById('quoteIcon').textContent = quote.icon;
+        document.getElementById('quoteText').textContent = quote.text;
+        document.getElementById('quoteReference').textContent = quote.reference;
+        document.getElementById('quoteTheme').textContent = quote.theme;
+
+        // Animacion de entrada
+        quoteContainer.classList.remove('changing');
+      }, 300);
+    }
+
+    // ===== CREAR ESTRELLAS =====
+    const starsContainer = document.getElementById('stars');
+    for (let i = 0; i < 80; i++) {
+      const star = document.createElement('div');
+      star.className = 'star';
+      star.style.left = Math.random() * 100 + '%';
+      star.style.top = Math.random() * 100 + '%';
+      star.style.width = (Math.random() * 3 + 1) + 'px';
+      star.style.height = star.style.width;
+      star.style.animationDelay = Math.random() * 3 + 's';
+      star.style.animationDuration = (Math.random() * 2 + 2) + 's';
+      starsContainer.appendChild(star);
+    }
+
+    // ===== CREAR FLORES CAYENDO =====
+    const flowers = ['🌼', '🌻', '💛', '⭐', '✨'];
+
+    function createFlower() {
+      const flower = document.createElement('div');
+      flower.className = 'flower';
+      flower.textContent = flowers[Math.floor(Math.random() * flowers.length)];
+      flower.style.left = Math.random() * 100 + 'vw';
+      flower.style.fontSize = (Math.random() * 12 + 18) + 'px';
+      flower.style.animationDuration = (Math.random() * 4 + 5) + 's';
+      document.body.appendChild(flower);
+
+      setTimeout(() => flower.remove(), 9000);
+    }
+
+    // ===== CONTROL DE MUSICA =====
+    const audioPlayer = document.getElementById('audioPlayer');
+    const playBtn = document.getElementById('playBtn');
+    const playIcon = document.getElementById('playIcon');
+    const playText = document.getElementById('playText');
+    const visualizer = document.getElementById('visualizer');
+    let isPlaying = false;
+    let musicLoaded = false;
+
+    function toggleMusic() {
+      if (isPlaying) {
+        audioPlayer.pause();
+      } else {
+        audioPlayer.play().catch(e => {
+          alert('Arrastra un archivo de musica sobre la pagina para reproducirlo');
+        });
+      }
+    }
+
+    // Sincronizar estado con eventos del reproductor
+    audioPlayer.addEventListener('play', () => {
+      isPlaying = true;
+      playIcon.textContent = '⏸️';
+      playText.textContent = 'Pausar Musica';
+      playBtn.classList.add('playing');
+      visualizer.classList.add('active');
+    });
+
+    audioPlayer.addEventListener('pause', () => {
+      isPlaying = false;
+      playIcon.textContent = '▶️';
+      playText.textContent = 'Reproducir Musica';
+      playBtn.classList.remove('playing');
+      visualizer.classList.remove('active');
+    });
+
+    audioPlayer.addEventListener('canplaythrough', () => {
+      musicLoaded = true;
+    });
+
+    // Volumen inicial
+    audioPlayer.volume = 0.6;
+
+    // ===== PANTALLA DE INICIO =====
+    function startExperience() {
+      const startScreen = document.getElementById('startScreen');
+      startScreen.classList.add('hidden');
+
+      // Crear flores iniciales
+      for (let i = 0; i < 12; i++) {
+        setTimeout(createFlower, i * 400);
+      }
+
+      // Seguir creando flores
+      setInterval(createFlower, 800);
+
+      // Intentar reproducir musica automaticamente
+      setTimeout(() => {
+        if (musicLoaded) {
+          audioPlayer.play().catch(e => {
+            // Si falla el autoplay, el usuario puede dar click al boton
+            console.log('Autoplay bloqueado, el usuario debe dar click');
+          });
+        }
+      }, 500);
+    }
+
+    // ===== ARRASTRAR ARCHIVOS DE AUDIO =====
+    let dragCounter = 0;
+
+    document.body.addEventListener('dragenter', (e) => {
+      e.preventDefault();
+      dragCounter++;
+      document.body.style.opacity = '0.7';
+    });
+
+    document.body.addEventListener('dragleave', (e) => {
+      e.preventDefault();
+      dragCounter--;
+      if (dragCounter === 0) {
+        document.body.style.opacity = '1';
+      }
+    });
+
+    document.body.addEventListener('dragover', (e) => {
+      e.preventDefault();
+    });
+
+    document.body.addEventListener('drop', (e) => {
+      e.preventDefault();
+      dragCounter = 0;
+      document.body.style.opacity = '1';
+
+      const files = e.dataTransfer.files;
+      if (files.length > 0) {
+        const file = files[0];
+        if (file.type.startsWith('audio/')) {
+          const url = URL.createObjectURL(file);
+          audioPlayer.src = url;
+          musicLoaded = true;
+
+          // Reproducir automaticamente cuando se carga un archivo
+          audioPlayer.play().catch(e => {
+            console.log('Error al reproducir:', e);
+          });
+
+          // Actualizar subtitulo con el nombre del archivo
+          const musicSubtitle = document.querySelector('.music-subtitle');
+          musicSubtitle.textContent = file.name.replace(/\.[^/.]+$/, "");
+        } else {
+          alert('Por favor arrastra un archivo de audio (MP3, WAV, etc.)');
+        }
+      }
+    });
+  </script>
+
+</body>
+
+</html>
