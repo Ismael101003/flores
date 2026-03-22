@@ -753,7 +753,7 @@
       </button>
 
       <div class="audio-container">
-        <audio id="audioPlayer" loop>
+        <audio id="audioPlayer" loop preload="auto">
 
           <source src="Flores.mp3" type="audio/mpeg">
           Tu navegador no soporta el elemento de audio.
@@ -1006,12 +1006,19 @@
     const visualizer = document.getElementById('visualizer');
     let isPlaying = false;
     let musicLoaded = false;
+    let shouldAutoplayOnStart = false;
+
+    function tryPlayAudio() {
+      audioPlayer.play().catch(() => {
+        // Si el navegador bloquea autoplay, el usuario puede usar el boton manual.
+      });
+    }
 
     function toggleMusic() {
       if (isPlaying) {
         audioPlayer.pause();
       } else {
-        audioPlayer.play().catch(e => {
+        audioPlayer.play().catch(() => {
           alert('Arrastra un archivo de musica sobre la pagina para reproducirlo');
         });
       }
@@ -1036,6 +1043,9 @@
 
     audioPlayer.addEventListener('canplaythrough', () => {
       musicLoaded = true;
+      if (shouldAutoplayOnStart && !isPlaying) {
+        tryPlayAudio();
+      }
     });
 
     // Volumen inicial
@@ -1045,6 +1055,7 @@
     function startExperience() {
       const startScreen = document.getElementById('startScreen');
       startScreen.classList.add('hidden');
+      shouldAutoplayOnStart = true;
 
       // Crear flores iniciales
       for (let i = 0; i < 12; i++) {
@@ -1054,15 +1065,15 @@
       // Seguir creando flores
       setInterval(createFlower, 800);
 
-      // Intentar reproducir musica automaticamente
+      // Intentar reproducir de inmediato tras la interaccion del usuario.
+      tryPlayAudio();
+
+      // Reintento si el audio aun no estaba listo al momento del click.
       setTimeout(() => {
-        if (musicLoaded) {
-          audioPlayer.play().catch(e => {
-            // Si falla el autoplay, el usuario puede dar click al boton
-            console.log('Autoplay bloqueado, el usuario debe dar click');
-          });
+        if (shouldAutoplayOnStart && !isPlaying) {
+          tryPlayAudio();
         }
-      }, 500);
+      }, 1200);
     }
 
     // ===== ARRASTRAR ARCHIVOS DE AUDIO =====
